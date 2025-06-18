@@ -80,7 +80,7 @@ class AppText extends StatelessWidget {
     this.decoration = TextDecoration.none,
     this.size,
     this.fontWeight,
-    this.fontFamily = "poppins",
+    this.fontFamily = "Inter",
     this.textAlign,
     this.height,
     this.letterSpacing,

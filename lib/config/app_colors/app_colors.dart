@@ -18,4 +18,5 @@ class AppColors {
 
   static Color fieldBgColor = Color.fromARGB(51, 196, 196, 196);
   static Color skyBlue = Colors.lightBlue.withValues(alpha: .2);
+  static Color blue = Color(0xff2683ff);
 }

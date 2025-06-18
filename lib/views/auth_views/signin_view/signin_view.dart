@@ -30,18 +30,16 @@ class SigninView extends StatelessWidget {
         body: Stack(
           children: [
             // Background Shapes Design
-            // Positioned(
-            //   bottom: -30,
-            //   left: 0,
-            //   child: CustomPaint(
-            //     size: Size(screenWidth, screenWidth * 0.5833),
-            //     painter: RPSCustomPainter(),
-            //   ),
-            // ),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Image.asset("assets/login_shape.png"),
+            ),
+
             Positioned(
               bottom: 0,
               left: 0,
-              child: Image.asset("assets/shape.png"),
+              child: Image.asset("assets/login_bottom_shape.png"),
             ),
 
             // Front Side Signup Design.
@@ -67,9 +65,15 @@ class SigninView extends StatelessWidget {
                         ),
                         SizedBox(height: 15),
 
-                        AppText(
-                          title: "Signin to continue your healing journey",
-                          size: 14,
+                        SizedBox(
+                          width: Get.width / 1.7,
+                          child: AppText(
+                            title: "Signin to continue your healing journey",
+                            size: 14,
+                            color: AppColors.white,
+                            maxLines: 2,
+                            overFlow: TextOverflow.ellipsis,
+                          ),
                         ),
                         SizedBox(height: 15),
 
@@ -77,7 +81,7 @@ class SigninView extends StatelessWidget {
                           padding: EdgeInsets.fromLTRB(12, 20, 12, 10),
                           decoration: BoxDecoration(
                             color: AppColors.white,
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(29),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withValues(alpha: 0.1),
@@ -90,6 +94,7 @@ class SigninView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             spacing: 10,
                             children: [
+                              SizedBox(height: 2),
                               // Email
                               labelText("Email"),
                               AppField(
@@ -227,22 +232,25 @@ class SigninView extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   SocialLoginWidget(
-                                    icon: FontAwesome.google,
-                                    onTap: () {},
+                                    icon: "assets/icons/google_logo.png",
+                                    onTap: () {
+                                      authController.signInWithGoogle();
+                                    },
                                     iconColor: AppColors.primary_color,
                                   ),
                                   SocialLoginWidget(
-                                    icon: FontAwesome.facebook,
+                                    icon: "assets/icons/facebook_logo.png",
                                     onTap: () {},
                                     iconColor: Colors.blueAccent,
                                   ),
                                   SocialLoginWidget(
-                                    icon: FontAwesome.apple,
+                                    icon: "assets/icons/apple_logo.png",
                                     onTap: () {},
                                     iconColor: AppColors.primary_color,
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 10),
                             ],
                           ),
                         ),
@@ -265,78 +273,5 @@ class SigninView extends StatelessWidget {
       fontWeight: FontWeight.w700,
       color: AppColors.primary_color,
     );
-  }
-}
-
-class CustomClipperPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    double w = size.width;
-    double h = size.height;
-
-    final path = Path();
-
-    path.lineTo(0, h);
-    path.lineTo(w, h);
-    path.lineTo(w, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-
-class RPSCustomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    // Layer 1
-
-    Paint paint_fill_0 =
-        Paint()
-          ..color = const Color.fromARGB(255, 195, 227, 212)
-          ..style = PaintingStyle.fill
-          ..strokeWidth = size.width * 0.00
-          ..strokeCap = StrokeCap.butt
-          ..strokeJoin = StrokeJoin.miter;
-
-    Path path_0 = Path();
-    path_0.moveTo(0, size.height * 0.5442857);
-    path_0.lineTo(size.width * 0.1016667, size.height * 0.5114286);
-    path_0.lineTo(size.width * 0.2041667, size.height * 0.4828571);
-    path_0.lineTo(size.width * 0.3041667, size.height * 0.4828571);
-    path_0.lineTo(size.width * 0.4050000, size.height * 0.5028571);
-    path_0.lineTo(size.width * 0.4666667, size.height * 0.5514286);
-    path_0.lineTo(size.width * 0.4883333, size.height * 0.6100000);
-    path_0.lineTo(size.width * 0.5050000, size.height * 0.6828571);
-    path_0.lineTo(size.width * 0.5116667, size.height * 0.7728571);
-    path_0.lineTo(size.width * 0.5216667, size.height * 0.8914286);
-    path_0.lineTo(size.width * 0.5225000, size.height * 0.9742857);
-    path_0.lineTo(size.width * 0.5225000, size.height * 1.0028571);
-    path_0.lineTo(0, size.height * 1.0014286);
-    path_0.lineTo(size.width * -0.0016667, size.height * 0.5528571);
-    path_0.lineTo(0, size.height * 0.5442857);
-    path_0.close();
-
-    canvas.drawPath(path_0, paint_fill_0);
-
-    // Layer 1
-
-    Paint paint_stroke_0 =
-        Paint()
-          ..color = const Color.fromARGB(255, 33, 150, 243)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = size.width * 0.00
-          ..strokeCap = StrokeCap.butt
-          ..strokeJoin = StrokeJoin.miter;
-
-    canvas.drawPath(path_0, paint_stroke_0);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }

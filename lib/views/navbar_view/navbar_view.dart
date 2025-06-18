@@ -5,6 +5,7 @@ import 'package:fluttericon/octicons_icons.dart';
 import 'package:test_assignment_app/config/app_colors/app_colors.dart';
 import 'package:test_assignment_app/views/home_view/home_view.dart';
 import 'package:test_assignment_app/views/profile_view/profile_view.dart';
+import 'package:test_assignment_app/views/remedy_details/remedy_details_view.dart';
 
 class NavbarView extends StatefulWidget {
   const NavbarView({super.key});
@@ -18,7 +19,7 @@ class _NavbarViewState extends State<NavbarView> {
   int index = 0;
   final screens = <Widget>[
     HomeView(),
-    Container(),
+    RemedyDetailsView(),
     ProfileView(),
     Container(),
     Container(),

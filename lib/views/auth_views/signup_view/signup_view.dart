@@ -3,12 +3,12 @@ import 'package:fluttericon/linecons_icons.dart';
 import 'package:get/get.dart';
 import 'package:test_assignment_app/api/auth_controller/auth_controller.dart';
 import 'package:test_assignment_app/config/app_colors/app_colors.dart';
+import 'package:test_assignment_app/config/green_shape.dart';
 import 'package:test_assignment_app/core/field_validators/field_validators.dart';
 import 'package:test_assignment_app/core/helpers/app_button/app_button.dart';
 import 'package:test_assignment_app/core/helpers/app_dropdown_widget/app_dropdown_widget.dart';
 import 'package:test_assignment_app/core/helpers/app_field/app_field.dart';
 import 'package:test_assignment_app/core/helpers/app_text/app_text.dart';
-import 'package:test_assignment_app/views/auth_views/signin_view/signin_view.dart';
 import 'package:test_assignment_app/views/auth_views/signup_view/signup_controller/signup_controller.dart';
 
 // ignore: must_be_immutable
@@ -181,7 +181,9 @@ class SignupView extends StatelessWidget {
                                 child: Obx(
                                   () =>
                                       authController.loader.value
-                                          ? CircularProgressIndicator()
+                                          ? CircularProgressIndicator(
+                                            color: AppColors.white,
+                                          )
                                           : AppText(
                                             title: "Create Account",
                                             color: AppColors.white,
